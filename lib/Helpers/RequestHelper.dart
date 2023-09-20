@@ -15,6 +15,7 @@ class RequestHelper {
       var decodeResponce = jsonDecode(responseData);
       return decodeResponce;
     } catch (exp) {
+      // throw Exception('Failed to load Qoute');
       return 'Error, no responce';
     }
   }
