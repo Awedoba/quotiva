@@ -1,3 +1,4 @@
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hive/hive.dart';
 import 'package:quotiva/Helpers/RequestHelper.dart';
 import 'package:quotiva/models/Quote.dart';
@@ -34,10 +35,4 @@ class HelperMethods {
 
     await _favoriteBox.delete(index);
   }
-  // static Future<Quote> saveQuote{
-
-  // }
-  // static Future<Quote> removeQuote{
-
-  // }
 }

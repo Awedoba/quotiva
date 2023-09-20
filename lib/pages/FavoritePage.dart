@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hive/hive.dart';
 import 'package:quotiva/Helpers/HelperMethods.dart';
 import 'package:quotiva/widget/QuoteCard.dart';
@@ -40,7 +41,7 @@ class _FavoritePageState extends State<FavoritePage> {
       key: _scaffoldState,
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('Quotiva'),
+        title: Text('Favorites'),
         centerTitle: true,
         leading: IconButton(
             onPressed: () {
@@ -79,14 +80,18 @@ class _FavoritePageState extends State<FavoritePage> {
                         children: [
                           IconButton(
                               onPressed: () async {
-                                HelperMethods.removeToFavorite(index);
+                                HelperMethods.removeToFavorite(
+                                    currentFav['id']);
                                 _refreshFavs();
+                                Fluttertoast.showToast(
+                                  msg: 'Quote removed from favorite',
+                                );
                               },
                               icon: Icon(Icons.delete)),
                           IconButton(
                               onPressed: () {
                                 Share.share(
-                                    "${currentFav['author']}\n--${currentFav['body']}");
+                                    "${currentFav['body']}\n--${currentFav['author']}");
                               },
                               icon: Icon(Icons.share))
                         ],

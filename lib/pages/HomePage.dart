@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
               return ListView.builder(
                   itemCount: snapshot.data!.length,
                   itemBuilder: (context, index) {
-                    return QuoteCard(snapshot.data![index].author!,
+                    return QuoteCard(snapshot.data![index].author ?? '',
                         snapshot.data![index].body!, false);
                   });
             }

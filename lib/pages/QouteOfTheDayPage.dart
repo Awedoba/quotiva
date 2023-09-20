@@ -22,18 +22,20 @@ class _QouteOfTheDayPageState extends State<QouteOfTheDayPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('Quotiva'),
+        title: const Text('Qoute Of The Day'),
         centerTitle: true,
-        leading:
-            IconButton(onPressed: () {}, icon: const Icon(Icons.arrow_back)),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(Icons.arrow_back)),
       ),
       body: FutureBuilder(
           future: quote,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              print('quote!');
-              print(snapshot.data!.author);
-              QuoteCard(snapshot.data!.author!, snapshot.data!.body!, true);
+              return QuoteCard(
+                  snapshot.data!.author!, snapshot.data!.body!, true);
             }
             return Container();
           }),
