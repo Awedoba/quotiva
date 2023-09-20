@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quotiva/Helpers/HelperMethods.dart';
 import 'package:share_plus/share_plus.dart';
 
 class QuoteCard extends StatefulWidget {
@@ -45,7 +46,9 @@ class _QuoteCardState extends State<QuoteCard> {
               Row(
                 children: [
                   IconButton(
-                      onPressed: () {},
+                      onPressed: () async {
+                        HelperMethods.addToFavorite(widget.author, widget.body);
+                      },
                       icon: Icon(Icons.favorite_border_outlined)),
                   IconButton(
                       onPressed: () {
