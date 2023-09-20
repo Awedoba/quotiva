@@ -12,6 +12,7 @@ class RequestHelper {
         return 'Error, no responce';
       }
       String responseData = httpResponce.body;
+
       var decodeResponce = jsonDecode(responseData);
       return decodeResponce;
     } catch (exp) {

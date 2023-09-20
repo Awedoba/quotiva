@@ -8,7 +8,7 @@ class Quote {
   Quote({this.id, this.author, this.author_permalink, this.body, this.url});
   factory Quote.fromJson(Map<String, dynamic> json) {
     return Quote(
-        id: json['id'],
+        id: json['id'].toString(),
         author: json['author'],
         author_permalink: json['author_permalink'],
         body: json['body'],

@@ -2,17 +2,30 @@ import 'package:quotiva/Helpers/RequestHelper.dart';
 import 'package:quotiva/models/Quote.dart';
 
 class HelperMethods {
-  static Future<List<Quote>> getQoutes() async {
+  static Future<List<Quote>>? getQoutes() async {
     // List<Quote> qoutes;
-    var resQuotes;
+    // Future<List<Quote>>? resQuotes;
     // var resQuotes;
-    var responce =
+    Map responce =
         await RequestHelper.receiveRequest('https://favqs.com/api/quotes');
     if (responce != 'Error, no responce') {
-      resQuotes = Quote.fromJson(responce["quotes"]);
-      // print('read ' + resQuotes);
+      return responce["quotes"]
+          .map<Quote>((qoute) => Quote.fromJson(qoute))
+          .toList() as List<Quote>;
     }
-    return resQuotes;
+    return [];
+  }
+
+  static Future<Quote>? getQoute() async {
+    // List<Quote> qoutes;
+    // Future<List<Quote>>? resQuotes;
+    // var resQuotes;
+    Map responce =
+        await RequestHelper.receiveRequest('https://favqs.com/api/qotd');
+    if (responce != 'Error, no responce') {
+      return Quote.fromJson(responce["quote"]);
+    }
+    return Quote();
   }
   // static Future<Quote> saveQuote{
 
